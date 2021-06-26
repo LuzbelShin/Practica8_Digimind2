@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_board">
+
+    <fragment
+        android:id="@+id/navigation_board"
+        android:name="valenzuela.carlos.digimind.ui.home.HomeFragment"
+        android:label="@string/titleMyBoard"
+        tools:layout="@layout/fragment_board" />
+
+    <fragment
+        android:id="@+id/navigation_reminder"
+        android:name="valenzuela.carlos.digimind.ui.dashboard.DashboardFragment"
+        android:label="@string/titleNewReminder"
+        tools:layout="@layout/fragment_reminder" />
+
+
+</navigation>

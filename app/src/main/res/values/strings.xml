@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Digimind</string>
+    <string name="titleMyBoard">My Board</string>
+    <string name="titleNewReminder">New Reminder</string>
+    <string name="reminderName">What do you want to remember to do?</string>
+    <string name="when">When do you want to do it?</string>
+    <string name="time">At what time?</string>
+    <string name="done">Done</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+</resources>
