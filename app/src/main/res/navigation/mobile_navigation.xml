@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_board"
-        android:name="valenzuela.carlos.digimind.ui.home.HomeFragment"
+        android:name="valenzuela.carlos.digimind.ui.board.BoardFragment"
         android:label="@string/titleMyBoard"
         tools:layout="@layout/fragment_board" />
 
     <fragment
         android:id="@+id/navigation_reminder"
-        android:name="valenzuela.carlos.digimind.ui.dashboard.DashboardFragment"
+        android:name="valenzuela.carlos.digimind.ui.reminder.ReminderFragment"
         android:label="@string/titleNewReminder"
         tools:layout="@layout/fragment_reminder" />
 
