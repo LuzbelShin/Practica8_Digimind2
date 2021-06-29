@@ -1,5 +1,6 @@
 package valenzuela.carlos.digimind.ui.reminder
 
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,9 @@ import valenzuela.carlos.digimind.R
 import valenzuela.carlos.digimind.databinding.FragmentReminderBinding
 import valenzuela.carlos.digimind.ui.Task
 import valenzuela.carlos.digimind.ui.board.BoardFragment
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ReminderFragment : Fragment() {
 
@@ -33,6 +37,21 @@ class ReminderFragment : Fragment() {
         _binding = FragmentReminderBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
+        val timeButton: Button = root.findViewById(R.id.timeButton)
+
+        timeButton.setOnClickListener {
+            val calendar = Calendar.getInstance()
+
+            val timeSetListener = TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+                calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
+                calendar.set(Calendar.MINUTE, minute)
+
+                timeButton.text = SimpleDateFormat("HH:mm").format(calendar.time)
+            }
+            TimePickerDialog(root.context, timeSetListener, calendar.get(Calendar.HOUR_OF_DAY),
+            calendar.get(Calendar.MINUTE), true).show()
+        }
+
         val btnSave: Button = root.findViewById(R.id.buttonDone)
         val tittle: EditText = root.findViewById(R.id.name)
         val sunday: CheckBox = root.findViewById(R.id.sunday)
@@ -42,7 +61,7 @@ class ReminderFragment : Fragment() {
         val thursday: CheckBox = root.findViewById(R.id.thursday)
         val friday: CheckBox = root.findViewById(R.id.friday)
         val saturday: CheckBox = root.findViewById(R.id.saturday)
-        val time: EditText = root.findViewById(R.id.timeInput)
+        //val time: EditText = root.findViewById(R.id.timeInput)
 
         btnSave.setOnClickListener {
 
@@ -72,7 +91,7 @@ class ReminderFragment : Fragment() {
                 days.add("Sunday")
             }
 
-            var time = time.text.toString()
+            var time = timeButton.text.toString()
 
             var task = Task(title, days, time)
 
