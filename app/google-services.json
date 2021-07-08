@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "473277273881",
+    "project_id": "mydigimind-2db93",
+    "storage_bucket": "mydigimind-2db93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:473277273881:android:9bcf61d895c8ad47551788",
+        "android_client_info": {
+          "package_name": "valenzuela.carlos.digimind"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "473277273881-7bem00765gdisplnpinhih5ic35c561c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4B4gassXTxRAxacUK4iwM_VqZPqYa-Ss"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "473277273881-7bem00765gdisplnpinhih5ic35c561c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
