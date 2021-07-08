@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+//import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import valenzuela.carlos.digimind.R
 import valenzuela.carlos.digimind.databinding.FragmentReminderBinding
@@ -26,23 +26,18 @@ class ReminderFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        dashboardViewModel =
-            ViewModelProvider(this).get(ReminderViewModel::class.java)
+    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        dashboardViewModel = ViewModelProvider(this).get(ReminderViewModel::class.java)
 
         _binding = FragmentReminderBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        val root = inflater.inflate(R.layout.fragment_reminder, container, false)
 
         val timeButton: Button = root.findViewById(R.id.timeButton)
 
         timeButton.setOnClickListener {
             val calendar = Calendar.getInstance()
 
-            val timeSetListener = TimePickerDialog.OnTimeSetListener { view, hourOfDay, minute ->
+            val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hourOfDay, minute ->
                 calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
                 calendar.set(Calendar.MINUTE, minute)
 
@@ -65,9 +60,9 @@ class ReminderFragment : Fragment() {
 
         btnSave.setOnClickListener {
 
-            var title = tittle.text.toString()
+            val title = tittle.text.toString()
 
-            var days = ArrayList<String>()
+            val days = ArrayList<String>()
 
             if(monday.isChecked){
                 days.add("Monday")
@@ -85,25 +80,20 @@ class ReminderFragment : Fragment() {
                 days.add("Friday")
             }
             if(saturday.isChecked){
-                days.add("Satuday")
+                days.add("Saturday")
             }
             if(sunday.isChecked){
                 days.add("Sunday")
             }
 
-            var time = timeButton.text.toString()
+            val time = timeButton.text.toString()
 
-            var task = Task(title, days, time)
+            val task = Task(title, days, time)
 
             BoardFragment.tasks.add(task)
 
             Toast.makeText(root.context, "New Task Added", Toast.LENGTH_LONG).show()
         }
         return root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

@@ -35,7 +35,7 @@ class BoardFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         boardViewModel =
             ViewModelProvider(this).get(BoardViewModel::class.java)
 
@@ -61,25 +61,19 @@ class BoardFragment : Fragment() {
         _binding = null
     }
 
-    fun fillTask(){
-        tasks.add(Task("Practice", arrayListOf("Monday", "Sunday"), "18:00"))
-        tasks.add(Task("Practice", arrayListOf("Monday", "Sunday"), "18:00"))
-        tasks.add(Task("Practice", arrayListOf("Monday", "Sunday"), "18:00"))
-        tasks.add(Task("Practice", arrayListOf("Monday", "Sunday"), "18:00"))
-        tasks.add(Task("Practice", arrayListOf("Monday", "Sunday"), "18:00"))
-        tasks.add(Task("Practice", arrayListOf("Monday", "Sunday"), "18:00"))
-        tasks.add(Task("Practice", arrayListOf("Monday", "Sunday"), "18:00"))
-        tasks.add(Task("Practice", arrayListOf("Monday", "Sunday"), "18:00"))
+    private fun fillTask(){
+        tasks.add(Task("Practice1", arrayListOf("Monday", "Sunday"), "18:00"))
+        tasks.add(Task("Practice2", arrayListOf("Monday", "Sunday"), "18:00"))
+        tasks.add(Task("Practice3", arrayListOf("Monday", "Sunday"), "18:00"))
+        tasks.add(Task("Practice4", arrayListOf("Monday", "Sunday"), "18:00"))
+        tasks.add(Task("Practice5", arrayListOf("Monday", "Sunday"), "18:00"))
+        tasks.add(Task("Practice6", arrayListOf("Monday", "Sunday"), "18:00"))
+        tasks.add(Task("Practice7", arrayListOf("Monday", "Sunday"), "18:00"))
+        tasks.add(Task("Practice8", arrayListOf("Monday", "Sunday"), "18:00"))
     }
 
-    private class taskAdapter: BaseAdapter{
-        var tasks = ArrayList<Task>()
-        var context: Context? = null
-
-        constructor(context: Context, tasks: ArrayList<Task>){
-            this.context = context
-            this.tasks = tasks
-        }
+    private class taskAdapter(context: Context, var tasks: ArrayList<Task>) : BaseAdapter() {
+        var context: Context? = context
 
         override fun getCount(): Int {
             return tasks.size
@@ -94,18 +88,18 @@ class BoardFragment : Fragment() {
         }
 
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-            var task = tasks[position]
+            val task = tasks[position]
 
-            var inflator = LayoutInflater.from(context)
-            var view = inflator.inflate(R.layout.task_view, null)
+            val inflator = LayoutInflater.from(context)
+            val view = inflator.inflate(R.layout.task_view, null)
 
-            var tvTittle:TextView = view.findViewById(R.id.tvTittle)
-            var tvDays:TextView = view.findViewById(R.id.tvDays)
-            var tvTime:TextView = view.findViewById(R.id.tvTime)
+            val tvTittle:TextView = view.findViewById(R.id.tvTittle)
+            val tvDays:TextView = view.findViewById(R.id.tvDays)
+            val tvTime:TextView = view.findViewById(R.id.tvTime)
 
-            tvTittle.setText(task.tittle)
-            tvDays.setText(task.days.toString())
-            tvTime.setText(task.time)
+            tvTittle.text = (task.tittle)
+            tvDays.text =(task.days.toString())
+            tvTime.text = (task.time)
 
             return view
         }
